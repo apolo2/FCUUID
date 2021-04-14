@@ -15,10 +15,10 @@
 NSString *const FCUUIDsOfUserDevicesDidChangeNotification = @"FCUUIDsOfUserDevicesDidChangeNotification";
 
 
-NSString *const _uuidForInstallationKey = @"fc_uuidForInstallation";
-NSString *const _uuidForDeviceKey = @"fc_uuidForDevice";
-NSString *const _uuidsOfUserDevicesKey = @"fc_uuidsOfUserDevices";
-NSString *const _uuidsOfUserDevicesToggleKey = @"fc_uuidsOfUserDevicesToggle";
+NSString *const _uuidForInstallationKey = @"gp_uuidForInstallation";
+NSString *const _uuidForDeviceKey = @"gp_uuidForDevice";
+NSString *const _uuidsOfUserDevicesKey = @"gp_uuidsOfUserDevices";
+NSString *const _uuidsOfUserDevicesToggleKey = @"gp_uuidsOfUserDevicesToggle";
 
 
 +(FCUUID *)sharedInstance
