@@ -465,4 +465,41 @@ NSString *const _uuidsOfUserDevicesToggleKey = @"gp_uuidsOfUserDevicesToggle";
 }
 
 
+// MARK: - Add-on
++(void)resetUuidForDevice
+{
+    [[self sharedInstance] _resetUuidForDevice];
+}
+
+-(void)_resetUuidForDevice
+{
+    [self _removeValueForKey:_uuidForDeviceKey
+                defaultValue:nil
+                userDefaults:YES
+                    keychain:YES
+                     service:nil
+                 accessGroup:nil
+              synchronizable:NO];
+}
+
+-(void)_removeValueForKey:(NSString *)key
+             defaultValue:(NSString *)defaultValue
+             userDefaults:(BOOL)userDefaults
+                 keychain:(BOOL)keychain
+                  service:(NSString *)service
+              accessGroup:(NSString *)accessGroup
+           synchronizable:(BOOL)synchronizable
+{
+    if (userDefaults ) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+
+    if (keychain){
+        UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:service accessGroup:accessGroup];
+        [keychain setSynchronizable:synchronizable];
+        [keychain removeItemForKey:key];
+    }
+}
+
 @end
